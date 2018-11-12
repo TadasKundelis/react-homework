@@ -2,12 +2,13 @@ import React from 'react';
 import { getImageUrl } from '../../config';
 
 class Card extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      summaryShowing: false,
+      summaryShowing: false
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   toggleSummary = () => {
@@ -17,6 +18,10 @@ class Card extends React.Component {
       summaryShowing: !summaryShowing,
     });
   };
+
+  handleClick() {
+    this.props.updateMovieData();
+  }
 
   render() {
     const { summaryShowing } = this.state;
@@ -30,7 +35,6 @@ class Card extends React.Component {
         vote_count,
       },
     } = this.props;
-
     return (
       <div className="card">
         <div className="card__image" style={{ backgroundImage: `url(${getImageUrl(poster_path)})` }} />
@@ -40,7 +44,7 @@ class Card extends React.Component {
         </div>
 
         <div className="card__like">
-          <i className="fa fa-heart-o" />
+          <i onClick={this.handleClick} className={"fa fa-heart" + (!this.props.data.isLiked ? "-o" : "")} />
         </div>
 
         <div className="card__subtitle">

@@ -4,7 +4,7 @@
   "main": "index.js",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server --mode development --host 0.0.0.0 --hot --open"
+    "start": "webpack-dev-server --mode development --host 127.0.0.1 --hot --open"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
